@@ -1,0 +1,20 @@
+.wl-btn {
+	background-color: #651fff;
+	border: 0;
+	outline: 0;
+	appearance: none;
+	border-radius: 4px;
+	color: #fff;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 18px;
+	font-weight: bold;
+
+	&--inline {
+		background: transparent;
+		display: inline-block;
+		outline: 0;
+		border: 0;
+		padding: 0;
+	}
+}

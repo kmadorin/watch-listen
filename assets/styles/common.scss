@@ -1,0 +1,22 @@
+// Common styles of the project
+
+html, body {
+	height: 100%;
+}
+
+.page__wrapper {
+	min-height: 100%;
+	margin-bottom: -50px;
+
+	&--stream {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		justify-content: stretch;
+		margin-bottom: 0;
+	}
+}
+
+* html .page__wrapper {
+	height: 100%;
+}

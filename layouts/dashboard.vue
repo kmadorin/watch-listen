@@ -58,7 +58,7 @@
 		</v-app-bar>
 
 		<v-main>
-			<Nuxt />
+			<Nuxt/>
 		</v-main>
 		<v-footer
 			color="indigo"
@@ -80,3 +80,9 @@
 		}),
 	}
 </script>
+
+<style lang="scss" scoped>
+	body {
+		font-family: 'Raleway', Helvetica, Arial, sans-serif;
+	}
+</style>
