@@ -8,7 +8,7 @@
 						<article class="wl-merch-item">
 							<a href="#" class="wl-merch-item__wrapper">
 								<div class="wl-merch-item__photo">
-									<img src="images/merch/4.png" alt="spaces">
+									<img src="/images/merch/4.png" alt="spaces">
 								</div>
 								<h3 class="wl-merch-item__title">
 									Spaces – Double 12" vinyl in die-cut sleeve incl. 2 inserts
@@ -21,7 +21,7 @@
 						<article class="wl-merch-item">
 							<a href="#" class="wl-merch-item__wrapper">
 								<div class="wl-merch-item__photo">
-									<img src="images/merch/3.png" alt="spaces">
+									<img src="/images/merch/3.png" alt="spaces">
 								</div>
 								<h3 class="wl-merch-item__title">
 									Felt – LP incl. insert + download code
@@ -34,7 +34,7 @@
 						<article class="wl-merch-item">
 							<a href="#" class="wl-merch-item__wrapper">
 								<div class="wl-merch-item__photo">
-									<img src="images/merch/2.png" alt="spaces">
+									<img src="/images/merch/2.png" alt="spaces">
 								</div>
 								<h3 class="wl-merch-item__title">
 									7fingers – LP incl.
@@ -48,7 +48,7 @@
 						<article class="wl-merch-item">
 							<a href="#" class="wl-merch-item__wrapper">
 								<div class="wl-merch-item__photo">
-									<img src="images/merch/1.png" alt="spaces">
+									<img src="/images/merch/1.png" alt="spaces">
 								</div>
 								<h3 class="wl-merch-item__title">
 									Spaces – Double 12" vinyl in die-cut sleeve incl. 2 inserts

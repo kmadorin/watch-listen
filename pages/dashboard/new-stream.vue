@@ -22,7 +22,7 @@
 	export default {
 		layout: 'dashboard',
 		components: {
-			NewStreamForm
+			NewStreamForm,
 		}
 	}
 </script>

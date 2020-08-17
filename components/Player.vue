@@ -2,14 +2,10 @@
 	<div class="wl-player">
 		<div class="wl-player__video">
 			<video
-				class="video-js vjs-fluid vjs-big-play-centered " poster="/images/poster.jpg" ref="videoPlayer" preload="auto" crossorigin="true"
+				class="video-js vjs-fluid vjs-big-play-centered " poster="/images/poster.jpg" ref="videoPlayer"
+				preload="auto" crossorigin="true"
 				controls
-			>
-				<source
-					src="https://fra-cdn.livepeer.com/hls/bmw9jp7udhs80bk1/index.m3u8"
-					type="application/x-mpegURL"
-				>
-			</video>
+			></video>
 		</div>
 		<div class="wl-player-overlay">
 			<div class="wl-player-overlay__top">
@@ -74,17 +70,27 @@
 
 	export default {
 		name: "Player",
+		props: {
+			stream_playback_url: {
+				type: String,
+				required: true,
+			},
+		},
 		data() {
 			return {
 				player: null,
-				options: {
-					fluid: true
-				}
 			}
 		},
 		mounted() {
-			this.player = videojs(this.$refs.videoPlayer, this.options, function onPlayerReady() {
-				console.log('onPlayerReady', this);
+			const playerOptions = {
+				fluid: true,
+				sources: [{
+					src: this.stream_playback_url,
+					type: 'application/x-mpegURL'
+				}]
+			};
+			this.player = videojs(this.$refs.videoPlayer, playerOptions, function onPlayerReady() {
+				console.log(this);
 			});
 		},
 		beforeDestroy() {

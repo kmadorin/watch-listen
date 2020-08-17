@@ -3,7 +3,7 @@
 		<Header/>
 		<section class="wl-stream" ref="stream">
 			<main class="wl-stream__content">
-				<Player/>
+				<Player v-if="isLoadingFinished" :stream_playback_url="streamPlaybackURL"/>
 				<MerchPanel/>
 				<DonationsPanel/>
 			</main>
@@ -15,11 +15,11 @@
 </template>
 
 <script>
-	import Header from "../components/Header";
-	import Player from "../components/Player";
-	import MerchPanel from "../components/MerchPanel";
-	import DonationsPanel from "../components/DonationsPanel";
-	import Chat from "../components/Chat";
+	import Header from "../../components/Header";
+	import Player from "../../components/Player";
+	import MerchPanel from "../../components/MerchPanel";
+	import DonationsPanel from "../../components/DonationsPanel";
+	import Chat from "../../components/Chat";
 
 
 	export default {
@@ -42,8 +42,18 @@
 		data: () => ({
 			isSidebarFixed: false,
 			headerHeight: 80,
+			streamPlaybackURL: '',
+			isLoadingFinished: false,
 		}),
+		async created() {
+			await this.getStreamPlaybackURL();
+			this.isLoadingFinished = true;
+		},
 		methods: {
+			async getStreamPlaybackURL() {
+				const stream_id = this.$route.params.id.slice(1);
+				this.streamPlaybackURL = (await this.$axios.get(`api/streams/get_stream_playback_url?id=${stream_id}`)).data;
+			},
 			onScroll() {
 				this.makeSidebarFixed();
 			},

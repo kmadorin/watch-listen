@@ -1,3 +1,5 @@
 module.exports = {
-	LIVEPEER_BASE_URL: 'https://livepeer.com/api/',
+	LIVEPEER_BASE_URL: "https://livepeer.com/api/",
+	LIVEPEER_PLAYBACK_URL: "https://fra-cdn.livepeer.com/hls/",
+	LIVEPEER_INGEST_URL: "rtmp://fra-rtmp.livepeer.com/live/",
 };

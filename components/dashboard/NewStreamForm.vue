@@ -1,5 +1,6 @@
 <template>
-	<v-form v-model="valid" class="new-stream-form" @submit.prevent="onSubmit">
+	<StreamDetails v-if="created" :stream_key="stream_key" :stream_id="stream_id"/>
+	<v-form v-else v-model="valid" class="new-stream-form" @submit.prevent="onSubmit">
 		<v-container>
 			<v-row>
 				<v-col>
@@ -34,25 +35,26 @@
 </template>
 
 <script>
+	import StreamDetails from "../../components/dashboard/StreamDetails";
 
 	export default {
+		components: {
+			StreamDetails,
+		},
+
 		data: () => ({
+			created: false,
 			valid: false,
 			name: '',
 			title: '',
 			titleRules: [
 				v => !!v || 'title is required',
 			],
+			stream_key: '',
+			stream_id: '',
 		}),
 		methods: {
 			createStream() {
-
-			},
-			onSubmit() {
-				if (this.title.trim() === '') {
-					return false
-				}
-
 				const streamParams = {
 					name: this.title.trim().toLowerCase().replace(/ /gi,'_'),
 					profiles: [
@@ -80,8 +82,19 @@
 					]
 				};
 
-				this.$axios.post(`api/streams/create`, streamParams,).then(res => console.log(res.data))
-					.catch(err => console.log(err));
+				this.$axios.post(`api/streams/create`, streamParams,).then(res => {
+					const {streamKey, id} = res.data;
+					this.stream_key = streamKey;
+					this.stream_id = id;
+					this.created = true;
+				}).catch(err => console.log(err));
+			},
+			onSubmit() {
+				if (this.title.trim() === '') {
+					return false
+				}
+
+				this.createStream();
 			}
 		}
 	}
