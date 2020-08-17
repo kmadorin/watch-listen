@@ -7,44 +7,44 @@
 			<v-list dense>
 				<v-list-item link>
 					<v-list-item-action>
-						<v-icon>mdi-home</v-icon>
+						<v-icon>mdi-webcam</v-icon>
 					</v-list-item-action>
 					<v-list-item-content>
-						<v-list-item-title>Home</v-list-item-title>
+						<v-list-item-title>New Stream</v-list-item-title>
 					</v-list-item-content>
 				</v-list-item>
-				<v-list-item link>
-					<v-list-item-action>
-						<v-icon>mdi-email</v-icon>
-					</v-list-item-action>
-					<v-list-item-content>
-						<v-list-item-title>My Streams</v-list-item-title>
-					</v-list-item-content>
-				</v-list-item>
-				<v-list-item link>
-					<v-list-item-action>
-						<v-icon>mdi-email</v-icon>
-					</v-list-item-action>
-					<v-list-item-content>
-						<v-list-item-title>Settings</v-list-item-title>
-					</v-list-item-content>
-				</v-list-item>
-				<v-list-item link>
-					<v-list-item-action>
-						<v-icon>mdi-email</v-icon>
-					</v-list-item-action>
-					<v-list-item-content>
-						<v-list-item-title>Merch Store</v-list-item-title>
-					</v-list-item-content>
-				</v-list-item>
-				<v-list-item link>
-					<v-list-item-action>
-						<v-icon>mdi-email</v-icon>
-					</v-list-item-action>
-					<v-list-item-content>
-						<v-list-item-title>Payments</v-list-item-title>
-					</v-list-item-content>
-				</v-list-item>
+<!--				<v-list-item link>-->
+<!--					<v-list-item-action>-->
+<!--						<v-icon>mdi-email</v-icon>-->
+<!--					</v-list-item-action>-->
+<!--					<v-list-item-content>-->
+<!--						<v-list-item-title>My Streams</v-list-item-title>-->
+<!--					</v-list-item-content>-->
+<!--				</v-list-item>-->
+<!--				<v-list-item link>-->
+<!--					<v-list-item-action>-->
+<!--						<v-icon>mdi-email</v-icon>-->
+<!--					</v-list-item-action>-->
+<!--					<v-list-item-content>-->
+<!--						<v-list-item-title>Settings</v-list-item-title>-->
+<!--					</v-list-item-content>-->
+<!--				</v-list-item>-->
+<!--				<v-list-item link>-->
+<!--					<v-list-item-action>-->
+<!--						<v-icon>mdi-email</v-icon>-->
+<!--					</v-list-item-action>-->
+<!--					<v-list-item-content>-->
+<!--						<v-list-item-title>Merch Store</v-list-item-title>-->
+<!--					</v-list-item-content>-->
+<!--				</v-list-item>-->
+<!--				<v-list-item link>-->
+<!--					<v-list-item-action>-->
+<!--						<v-icon>mdi-email</v-icon>-->
+<!--					</v-list-item-action>-->
+<!--					<v-list-item-content>-->
+<!--						<v-list-item-title>Payments</v-list-item-title>-->
+<!--					</v-list-item-content>-->
+<!--				</v-list-item>-->
 			</v-list>
 		</v-navigation-drawer>
 
