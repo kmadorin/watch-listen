@@ -68,7 +68,7 @@
 					]
 				};
 
-				this.$axios.post(`api/streams/create`, streamParams,).then(res => {
+				this.$axios.post(`/api/streams/create`, streamParams,).then(res => {
 					const {streamKey, id} = res.data;
 					this.stream_key = streamKey;
 					this.stream_id = id;

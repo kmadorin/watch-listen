@@ -52,7 +52,7 @@
 		methods: {
 			async getStreamPlaybackURL() {
 				const stream_id = this.$route.params.id.slice(1);
-				this.streamPlaybackURL = (await this.$axios.get(`api/streams/get_stream_playback_url?id=${stream_id}`)).data;
+				this.streamPlaybackURL = (await this.$axios.get(`/api/streams/get_stream_playback_url?id=${stream_id}`)).data;
 			},
 			onScroll() {
 				this.makeSidebarFixed();
