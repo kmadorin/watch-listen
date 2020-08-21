@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.1",
+    "@nuxtjs/firebase": "^6.1.1",
     "axios": "^0.19.2",
+    "firebase": "^7.18.0",
     "nuxt": "^2.14.0",
     "video.js": "^7.8.4"
   },

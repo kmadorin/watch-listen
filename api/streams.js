@@ -1,6 +1,21 @@
 // we can get data from any DB
 import { LIVEPEER_BASE_URL, LIVEPEER_INGEST_URL, LIVEPEER_PLAYBACK_URL } from "../constants";
 import axios from "axios";
+import firebase from "firebase";
+
+firebase.initializeApp(
+	{
+		apiKey: process.env.FIREBASE_API_KEY,
+		authDomain: "watch-listen.firebaseapp.com",
+		databaseURL: "https://watch-listen.firebaseio.com",
+		projectId: "watch-listen",
+		storageBucket: "watch-listen.appspot.com",
+		messagingSenderId: "634714552825",
+		appId: "1:634714552825:web:78da18679308509172a528"
+	}
+);
+
+const db = firebase.firestore();
 
 function getHeaders() {
 	return {
@@ -30,8 +45,12 @@ async function getAllStreams() {
 	const headers = getHeaders();
 	const userId = await getUserId();
 	const res = await axios.get(`${LIVEPEER_BASE_URL}stream/user/${userId}`, {headers});
-
 	return res.data;
+
+	// const snapshot = await db.collection('streams').get();
+	// const streams = snapshot.docs.map(doc => doc.data());
+	//
+	// return streams;
 }
 
 async function getStreamById(id) {
@@ -67,6 +86,7 @@ async function create(streamParams) {
 async function stream({id}) {
 	return await getStreamById(id);
 }
+
 
 async function get_stream_playback_url({id}) {
 	const stream = await getStreamById(id);

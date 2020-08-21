@@ -1,6 +1,6 @@
 <template>
 	<StreamDetails v-if="created" :stream_key="stream_key" :stream_id="stream_id"/>
-	<v-form v-else v-model="valid" class="new-stream-form" @submit.prevent="onSubmit">
+	<v-form v-else v-model="valid" enctype="multipart/form-data" class="new-stream-form" @submit.prevent="onSubmit">
 		<v-container>
 			<v-row>
 				<v-col>
@@ -21,6 +21,32 @@
 						outlined
 						required
 					></v-text-field>
+				</v-col>
+			</v-row>
+			<v-row>
+				<v-col sm="4">
+					<v-subheader class="new-stream-form__label">Description</v-subheader>
+				</v-col>
+				<v-col sm="8">
+					<v-textarea
+						v-model="description"
+						placeholder=""
+						outlined
+					></v-textarea>
+				</v-col>
+			</v-row>
+			<v-row>
+				<v-col sm="4">
+					<v-subheader class="new-stream-form__label">Stream cover</v-subheader>
+				</v-col>
+				<v-col sm="8">
+					<v-file-input
+						:rules="coverRules"
+						accept="image/png, image/jpeg, image/bmp"
+						prepend-icon="mdi-camera"
+						placeholder="Pick an image"
+						@change="onFileChange"
+					></v-file-input>
 				</v-col>
 			</v-row>
 		</v-container>
@@ -46,10 +72,15 @@
 		data: () => ({
 			created: false,
 			valid: false,
-			name: '',
 			title: '',
+			description: '',
+			coverImage: null,
+			coverImageURL: '',
 			titleRules: [
 				v => !!v || 'title is required',
+			],
+			coverRules: [
+				value => !value || value.size < 3000000 || 'Stream cover image should be less than 3 MB!',
 			],
 			stream_key: '',
 			stream_id: '',
@@ -69,19 +100,48 @@
 					]
 				};
 
-				this.$axios.post(`${PROD_API_BASE_URL}api/streams/create`, streamParams,).then(res => {
+				return this.$axios.post(`${PROD_API_BASE_URL}api/streams/create`, streamParams,).then(res => {
 					const {streamKey, id} = res.data;
+					console.log(res.data);
 					this.stream_key = streamKey;
 					this.stream_id = id;
 					this.created = true;
-				}).catch(err => console.log(err));
+					return this.saveStreamToFirebase();
+				});
 			},
+
+			saveStreamToFirebase() {
+				// save cover to FireStore and get link
+				const uploadTask = this.$fireStorage.ref(this.coverImage.name).put(this.coverImage).then((snapshot) => {
+					return snapshot.ref.getDownloadURL();
+				}).then(url => {
+					this.coverImageURL = url;
+
+					return this.$fireStore
+						.collection('streams')
+						.doc(this.stream_id)
+						.set({
+							id: this.stream_id,
+							title: this.title,
+							description: this.description,
+							streamKey: this.stream_key,
+							coverImageURL: this.coverImageURL,
+						});
+				});
+			},
+
+			onFileChange(image) {
+				this.coverImage = image;
+			},
+
 			onSubmit() {
 				if (this.title.trim() === '') {
 					return false
 				}
 
-				this.createStream();
+				this.createStream().then((res)=>{
+					console.log('Stream created');
+				}).catch(error => alert('Error occured:', error));
 			}
 		}
 	}
