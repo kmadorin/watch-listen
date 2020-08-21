@@ -1,21 +1,6 @@
 // we can get data from any DB
 import { LIVEPEER_BASE_URL, LIVEPEER_INGEST_URL, LIVEPEER_PLAYBACK_URL } from "../constants";
 import axios from "axios";
-import firebase from "firebase";
-
-firebase.initializeApp(
-	{
-		apiKey: process.env.FIREBASE_API_KEY,
-		authDomain: "watch-listen.firebaseapp.com",
-		databaseURL: "https://watch-listen.firebaseio.com",
-		projectId: "watch-listen",
-		storageBucket: "watch-listen.appspot.com",
-		messagingSenderId: "634714552825",
-		appId: "1:634714552825:web:78da18679308509172a528"
-	}
-);
-
-const db = firebase.firestore();
 
 function getHeaders() {
 	return {
