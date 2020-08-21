@@ -62,7 +62,7 @@
 
 <script>
 	import StreamDetails from "../../components/dashboard/StreamDetails";
-	import {PROD_API_BASE_URL} from "../../constants";
+	import {PROD_API_BASE_URL,DEV_API_BASE_URL} from "../../constants";
 
 	export default {
 		components: {
@@ -76,6 +76,7 @@
 			description: '',
 			coverImage: null,
 			coverImageURL: '',
+			playbackId: '',
 			titleRules: [
 				v => !!v || 'title is required',
 			],
@@ -100,12 +101,14 @@
 					]
 				};
 
-				return this.$axios.post(`${PROD_API_BASE_URL}streams/create`, streamParams,).then(res => {
-					const {streamKey, id} = res.data;
-					console.log(res.data);
+				const API_BASE_URL = process.env.NODE_ENV === 'development' ? DEV_API_BASE_URL : PROD_API_BASE_URL;
+
+				return this.$axios.post(`${API_BASE_URL}streams/create`, streamParams,).then(res => {
+					const {streamKey, id, playbackId} = res.data;
 					this.stream_key = streamKey;
 					this.stream_id = id;
 					this.created = true;
+					this.playbackId = playbackId;
 					return this.saveStreamToFirebase();
 				});
 			},
@@ -126,6 +129,7 @@
 							description: this.description,
 							streamKey: this.stream_key,
 							coverImageURL: this.coverImageURL,
+							playbackId: this.playbackId,
 						});
 				});
 			},

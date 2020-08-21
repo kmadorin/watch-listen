@@ -53,7 +53,7 @@
 
 		computed: {
 			rtmp_ingest_url() {
-				return `${LIVEPEER_INGEST_URL}${this.stream_key}`
+				return `${LIVEPEER_INGEST_URL}`
 			},
 		},
 
