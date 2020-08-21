@@ -58,6 +58,7 @@
 				const livepeerURLsRes = await this.$axios.get(`${API_BASE_URL}livepeer/get_urls`);
 				this.streamData = streamDataRef.data();
 				this.streamData.playbackURL = livepeerURLsRes.data.playback_url + '/' + this.streamData.playbackId + '/index.m3u8';
+				console.log(this.streamData.playbackURL);
 			},
 			onScroll() {
 				this.makeSidebarFixed();
