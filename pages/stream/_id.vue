@@ -54,7 +54,7 @@
 			async getStreamData() {
 				const stream_id = this.$route.params.id ? this.$route.params.id.slice(1) : '10615053-7555-4b3d-86f2-ce665070c2d8';
 				const streamDataRef = await this.$fireStore.collection('streams').doc(stream_id).get();
-				const livepeerURLsRes = await this.$axios.get('/api/livepeer/get_urls');
+				const livepeerURLsRes = await this.$axios.get(`${PROD_API_BASE_URL}/api/livepeer/get_urls`);
 				this.streamData = streamDataRef.data();
 				console.log(this.streamData);
 				this.streamData.playbackURL = livepeerURLsRes.data.playback_url + '/' + this.streamData.streamKey + '/index.m3u8';
