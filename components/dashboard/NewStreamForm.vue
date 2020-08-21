@@ -62,6 +62,7 @@
 
 <script>
 	import StreamDetails from "../../components/dashboard/StreamDetails";
+	import {PROD_API_BASE_URL} from "../../constants";
 
 	export default {
 		components: {
@@ -99,7 +100,7 @@
 					]
 				};
 
-				return this.$axios.post(`/api/streams/create`, streamParams,).then(res => {
+				return this.$axios.post(`${PROD_API_BASE_URL}api/streams/create`, streamParams,).then(res => {
 					const {streamKey, id} = res.data;
 					console.log(res.data);
 					this.stream_key = streamKey;

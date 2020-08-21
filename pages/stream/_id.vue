@@ -20,6 +20,7 @@
 	import MerchPanel from "../../components/MerchPanel";
 	import DonationsPanel from "../../components/DonationsPanel";
 	import Chat from "../../components/Chat";
+	import {PROD_API_BASE_URL} from "../../constants";
 
 
 	export default {

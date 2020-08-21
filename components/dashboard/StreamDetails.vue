@@ -37,7 +37,6 @@
 </template>
 
 <script>
-
 	import { LIVEPEER_INGEST_URL } from '../../constants'
 
 	export default {
