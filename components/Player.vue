@@ -2,7 +2,7 @@
 	<div class="wl-player">
 		<div class="wl-player__video">
 			<video
-				class="video-js vjs-fluid vjs-big-play-centered " poster="/images/poster.jpg" ref="videoPlayer"
+				class="video-js vjs-fluid vjs-big-play-centered " :poster="stream_data.coverImageURL" ref="videoPlayer"
 				preload="auto" crossorigin="true"
 				controls
 			></video>
@@ -71,8 +71,8 @@
 	export default {
 		name: "Player",
 		props: {
-			stream_playback_url: {
-				type: String,
+			stream_data: {
+				type: Object,
 				required: true,
 			},
 		},
@@ -85,7 +85,7 @@
 			const playerOptions = {
 				fluid: true,
 				sources: [{
-					src: this.stream_playback_url,
+					src: this.stream_data.playbackURL,
 					type: 'application/x-mpegURL'
 				}]
 			};

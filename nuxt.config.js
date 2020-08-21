@@ -53,7 +53,25 @@ export default {
   */
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/firebase',
   ],
+
+  firebase: {
+    config: {
+      apiKey: process.env.FIREBASE_API_KEY,
+      authDomain: "watch-listen.firebaseapp.com",
+      databaseURL: "https://watch-listen.firebaseio.com",
+      projectId: "watch-listen",
+      storageBucket: "watch-listen.appspot.com",
+      messagingSenderId: "634714552825",
+      appId: "1:634714552825:web:78da18679308509172a528"
+    },
+    services: {
+      firestore: true,
+      storage: true,
+    }
+  },
+
   server: {
     port: 8080, // default: 3000
   },
