@@ -9,7 +9,7 @@
 			</div>
 		</div>
 		<div class="wl-header__right">
-			<button type="button" class="wl-header__button">New Stream</button>
+			<a href="/dashboard/new-stream" target="_blank" class="wl-header__button">New Stream</a>
 			<div class="wl-header__notifications">
 
 			</div>
@@ -32,6 +32,8 @@
 </script>
 
 <style lang='scss' scoped>
+	@import "~/assets/styles/defs.scss";
+
 	.wl-header {
 		display: flex;
 		padding: 20px 40px;
@@ -52,6 +54,7 @@
 		&__search {
 			margin-left: 34px;
 			max-width: 290px;
+			display: none;
 		}
 		&__right {
 			display: flex;
@@ -68,6 +71,12 @@
 			line-height: 40px;
 			padding: 0 18px;
 			font-weight: bold;
+
+			display: none;
+
+			@include media-min('sm') {
+				display: block;
+			}
 
 			&:before {
 				content: '';

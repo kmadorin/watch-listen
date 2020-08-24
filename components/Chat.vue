@@ -6,14 +6,14 @@
 		<div class="wl-chat__messages">
 			<div class="wl-chat__message">
 			<span class="wl-chat__message_author">
-				happ325:
+
 			</span>
-				<span class="wl-chat__message__text">Great!</span>
+				<span class="wl-chat__message__text">Chat Disabled</span>
 			</div>
 		</div>
 		<form action="" class="wl-chat-form">
-			<input type="text" class="wl-chat-form__input">
-			<button type="submit" class="wl-btn wl-chat-form__send">Send</button>
+			<input type="text" class="wl-chat-form__input" disabled>
+			<button type="submit" disabled class="wl-btn wl-chat-form__send">Send</button>
 		</form>
 	</div>
 </template>

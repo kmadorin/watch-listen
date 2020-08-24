@@ -4,8 +4,8 @@
 		<section class="wl-stream" ref="stream">
 			<main class="wl-stream__content">
 				<Player v-if="isLoadingFinished" :stream_data="streamData"/>
-				<MerchPanel/>
-				<DonationsPanel/>
+				<MerchPanel class="wl-stream__merch"/>
+				<DonationsPanel class="wl-stream__donations"/>
 			</main>
 			<aside :class="['wl-stream__sidebar', isSidebarFixed && 'wl-stream__sidebar--fixed']">
 				<Chat/>
@@ -78,27 +78,44 @@
 	@import "~/assets/styles/defs.scss";
 
 	.wl-stream {
-		display: flex;
-		align-items: stretch;
-		justify-content: stretch;
-		flex-grow: 1;
+
+		@include media-min('md') {
+			display: flex;
+			align-items: stretch;
+			justify-content: stretch;
+			flex-grow: 1;
+		}
 
 		&__content {
-			width: 70%;
-			padding-bottom: 60px;
+
+			@include media-min('md') {
+				width: 70%;
+				padding-bottom: 60px;
+			}
+		}
+
+		&__merch, &__donations {
+			display: none;
+
+			@include media-min('md') {
+				display: block;
+			}
 		}
 
 		&__sidebar {
-			display: flex;
-			justify-content: stretch;
-			align-items: stretch;
-			width: 30%;
-			box-sizing: border-box;
+			display: none;
+			@include media-min('md') {
+				display: flex;
+				justify-content: stretch;
+				align-items: stretch;
+				width: 30%;
+				box-sizing: border-box;
 
-			&--fixed {
-				position: fixed;
-				top: 0;
-				right: 0;
+				&--fixed {
+					position: fixed;
+					top: 0;
+					right: 0;
+				}
 			}
 		}
 	}

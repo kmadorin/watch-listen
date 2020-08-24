@@ -110,7 +110,7 @@
 					this.created = true;
 					this.playbackId = playbackId;
 					return this.saveStreamToFirebase();
-				});
+				}).catch(e => {console.log(e)});
 			},
 
 			saveStreamToFirebase() {
@@ -145,7 +145,7 @@
 
 				this.createStream().then((res)=>{
 					console.log('Stream created');
-				}).catch(error => alert('Error occured:', error));
+				}).catch(error => console.log('Error occured while creating new stream:', error));
 			}
 		}
 	}
